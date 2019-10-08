@@ -8,11 +8,13 @@ import UIKit
 
 let numbers = [1,1,2,4,4,4,6,6,7,8]
 
-var numbersWithNoDuplicates = [Int]()
+var numbersWithNoDuplicates = Set<Int>(numbers)
 
-// Your code here
 
-//assert(numbersWithNoDuplicates == [1,2,4,6,7,8], "Was expecting [1,2,4,6,7,8], but got \(numbersWithNoDuplicates)")
+print(numbersWithNoDuplicates.sorted())
+
+
+assert(numbersWithNoDuplicates == [1,2,4,6,7,8], "Was expecting [1,2,4,6,7,8], but got \(numbersWithNoDuplicates)")
 
 // Questions Two
 
@@ -20,7 +22,9 @@ var numbersWithNoDuplicates = [Int]()
 
 let scores = [1, 77, 83, 32, 77, 77, 83, 32, 99]
 
-var scoresThatAppearOnce = [Int]()
+var scoresThatAppearOnce = Set<Int>(scores)
+
+print(scoresThatAppearOnce.sorted())
 
 // Your code here
 
@@ -34,25 +38,27 @@ var scoresThatAppearOnce = [Int]()
 
 let arrOne = [1,2,3,4,5]
 let arrTwo = [3,4,5,6,7]
+var arrThree = Array(Set(arrOne).union(Set(arrTwo))).sorted()
 
-var arrThree: [Int] = []
 
 // Your code here
 
-//assert(arrThree == [1,2,3,4,5,6,7], "Was expecting [1,2,3,4,5,6,7], but got \(arrThree)")
+assert(arrThree == [1,2,3,4,5,6,7], "Was expecting [1,2,3,4,5,6,7], but got \(arrThree)")
 
 // b.
 
 // Given arrFour and arrFive, create a variable arrSix with is equal to the INTERSECTION of arrFour and arrFive.  If should not contain any duplicate elements.  Sort arrSix from smallest to greatest.
 
-let arrFour = [1,2,3,4,5]
-let arrFive = [3,4,5,6,7]
+let arrFour: Set<Int> = [1,2,3,4,5]
+let arrFive: Set<Int> = [3,4,5,6,7]
 
-var arrSix: [Int] = []
+var arrSix = arrFour.intersection(arrFive).sorted()
+
+
 
 // Your code here
 
-//assert(arrSix == [3,4,5], "Was expecting [3,4,5], but got \(arrSix)")
+assert(arrSix == [3,4,5], "Was expecting [3,4,5], but got \(arrSix)")
 
 // Question Four
 
