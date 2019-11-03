@@ -21,11 +21,20 @@ assert(numbersWithNoDuplicates == [1,2,4,6,7,8], "Was expecting [1,2,4,6,7,8], b
 // Create a new array scoresThatAppearOnce that has all the elements from scores that appear exactly once.  It should be in the same order as the original.
 
 let scores = [1, 77, 83, 32, 77, 77, 83, 32, 99]
-
-var scoresThatAppearOnce = Set<Int>(scores)
-
-print(scoresThatAppearOnce.sorted())
-
+var noNumArray = [Int]()
+var uniqueScore = Set<Int>() // 1, 99
+var removedNum: Set<Int> = [] // 77, 83 32
+var scoresThatAppearOnce = [Int]()
+for score in scores {
+   if uniqueScore.contains(score) || removedNum.contains(score) {
+       uniqueScore.remove(score)
+       removedNum.insert(score)
+   } else {
+       uniqueScore.insert(score)
+   }
+}
+print(uniqueScore)
+    
 // Your code here
 
 //assert(scoresThatAppearOnce == [1, 99], "Was expecting [1, 99], but got \(scoresThatAppearOnce)")
@@ -33,7 +42,6 @@ print(scoresThatAppearOnce.sorted())
 // Question Three
 
 // a.
-
 // Given arrOne and arrTwo, create a variable arrThree which is equal to the UNION of arrOne and arrTwo.  It should not contain any duplicate elements.  Sort arrThree from smallest to greatest.
 
 let arrOne = [1,2,3,4,5]
@@ -53,7 +61,7 @@ let arrFour: Set<Int> = [1,2,3,4,5]
 let arrFive: Set<Int> = [3,4,5,6,7]
 
 var arrSix = arrFour.intersection(arrFive).sorted()
-
+print(arrSix)
 
 
 // Your code here
@@ -68,10 +76,10 @@ let numsOne = [2, 4, 5, 6, 8, 10, 12]
 let numsTwo = [1, 2, 3, 4, 5, 6]
 let numsThree = [5, 6, 7, 8, 9, 10, 11, 12]
 let numsFour = [1, 3, 4, 5, 6, 7, 9]
+var allArrays = (numsOne + numsTwo + numsThree + numsFour).sorted()
+var allNumsWithNoDuplicates = Set([allArrays])
+print(allArrays)
 
-var allNumsWithNoDuplicates: [Int] = []
-
-// Your code here
 
 //assert(allNumsWithNoDuplicates == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "Was expecting [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], but got \([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])")
 
@@ -89,6 +97,16 @@ let strThree = "Sphinx of black quartz, judge my vow"
 var strOneIsPangram: Bool = false
 var strTwoIsPangram: Bool = false
 var strThreeIsPangram: Bool = false
+
+var strThreeTrimmed = ""
+for char in strThree {
+    if char.isWhitespace || char.isPunctuation { continue }
+    strThreeTrimmed += String(char)
+}
+let trimmedStrThree = Array(Set(strThreeTrimmed.lowercased())).sorted()
+
+
+
 
 // Your code here
 
